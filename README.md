@@ -1,4 +1,5 @@
 # Melvin
+<<<<<<< HEAD
 
 Extending a 25 year old Volvo with micro-controllers.
 
@@ -170,3 +171,6 @@ See LICENSE file for details.
 
 - **Melvin_controller_scheme.md**: Detailed architecture and API documentation
 - **inspiration/**: Reference images and project goals
+=======
+Extending my Volvo with micro-controllers interconnected via serial network
+>>>>>>> c87128c (Initial commit)
