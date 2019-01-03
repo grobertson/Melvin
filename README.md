@@ -1,5 +1,5 @@
 # Melvin
-Extending my Volvo with micro-controllers interconnected via serial network
+Extending my Volvo with micro-controllers interconnected via serial network. This is a very early WIP, at this stage it's more like a thought experiment taken a little too far and an excuse to dive deeper into circuit design. 
 
 #Melvin_
 The master controller (000). Sends messages to a slave device controlling light relays.
