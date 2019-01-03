@@ -1,5 +1,4 @@
 # Melvin
-<<<<<<< HEAD
 
 Extending a 25 year old Volvo with micro-controllers.
 
