@@ -1,4 +1,12 @@
 # Melvin
+<<<<<<< HEAD
+=======
+
+This has been superceeded by a higher level project [Retromod-In-Car-Systems](https://github.com/grobertson/Retromod-In-Car-Systems)
+-----
+
+Extending my Volvo with micro-controllers interconnected via serial network. This is a very early WIP, at this stage it's more like a thought experiment taken a little too far and an excuse to dive deeper into circuit design. 
+>>>>>>> b1959ec (Update README.md)
 
 Extending a 25 year old Volvo with micro-controllers.
 
