@@ -1,0 +1,26 @@
+{
+  "name": "MelvinMemberController",
+  "version": "0.3.0",
+  "description": "Header-only base class library for Melvin member controllers with WiFi, REST API, and MQTT support",
+  "keywords": ["melvin", "esp32", "iot", "mqtt", "controller"],
+  "authors": [
+    {
+      "name": "Melvin Project",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grobertson/Melvin_network"
+  },
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "espressif32",
+  "dependencies": {
+    "bblanchon/ArduinoJson": "^6.21.3",
+    "mlesniew/PicoMQTT": "^0.3.8"
+  },
+  "build": {
+    "flags": "-DMQTT_ENABLED=1"
+  }
+}

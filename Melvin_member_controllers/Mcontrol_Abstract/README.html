@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Abstract Member Controller Template</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="abstract-member-controller-template">Abstract Member Controller Template</h1>
+<p>This is a generic template for all Melvin member controllers. It provides the basic structure, communication protocols, and patterns that all member controllers should follow.</p>
+<h2 id="overview">Overview</h2>
+<p>This abstract controller demonstrates:</p>
+<ul>
+<li>WiFi connection to Melvin Master Controller</li>
+<li>Device registration and heartbeat management</li>
+<li>Control creation and value updates</li>
+<li>Modular design patterns</li>
+<li>Error handling and recovery</li>
+<li>Configuration management</li>
+</ul>
+<h2 id="key-components">Key Components</h2>
+<h3 id="core-features">Core Features</h3>
+<ul>
+<li><strong>Network Management</strong>: Automatic connection to master controller</li>
+<li><strong>Device Registration</strong>: Self-registration with unique device identification</li>
+<li><strong>Control Management</strong>: Creation and management of various control types</li>
+<li><strong>Heartbeat System</strong>: Periodic communication to maintain connection</li>
+<li><strong>Error Recovery</strong>: Automatic reconnection and error handling</li>
+</ul>
+<h3 id="control-types-supported">Control Types Supported</h3>
+<ul>
+<li>Boolean controls (switches, buttons)</li>
+<li>Continuous controls (potentiometers, sliders)</li>
+<li>Rotary controls (encoders)</li>
+<li>Multi-axis controls (joysticks)</li>
+<li>RGB color controls</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<pre><code>Abstract Member Controller
+├── Network Layer (WiFi connection)
+├── Registration Layer (Device identification)
+├── Control Layer (Input/Output management)
+├── Communication Layer (REST API client)
+└── Hardware Abstraction Layer (GPIO, ADC, etc.)
+</code></pre>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>Copy this template to create a new member controller</li>
+<li>Modify <code>DEVICE_TYPE</code>, <code>DEVICE_NAME</code>, and <code>DEVICE_ID</code> constants</li>
+<li>Implement hardware-specific <code>setup_hardware()</code> and <code>read_inputs()</code> functions</li>
+<li>Define your specific controls in <code>setup_controls()</code></li>
+<li>Customize the control reading logic in <code>update_controls()</code></li>
+</ol>
+<h2 id="file-structure">File Structure</h2>
+<pre><code>Mcontrol_Abstract/
+├── platformio.ini          # PlatformIO configuration
+├── src/
+│   └── main.cpp            # Main controller implementation
+├── include/
+│   ├── melvin_member.h     # Member controller base class
+│   └── config.h            # Configuration constants
+└── README.md               # This documentation
+</code></pre>
+<h2 id="network-configuration">Network Configuration</h2>
+<p>The controller automatically connects to:</p>
+<ul>
+<li><strong>SSID</strong>: Melvin_Control_Network</li>
+<li><strong>Password</strong>: MelvinController2025</li>
+<li><strong>Master IP</strong>: 192.168.4.1 (ESP32 AP default)</li>
+</ul>
+<h2 id="customization-points">Customization Points</h2>
+<p>When creating a specific member controller:</p>
+<ol>
+<li>
+<p><strong>Device Configuration</strong> (in <code>config.h</code>):</p>
+<pre><code class="language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">define</span> DEVICE_TYPE DEVICE_HUMAN_INTERFACE  <span class="hljs-comment">// Change as needed</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> DEVICE_NAME <span class="hljs-string">&quot;Custom Controller Name&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> DEVICE_ID <span class="hljs-string">&quot;CUSTOM_001&quot;</span></span>
+</code></pre>
+</li>
+<li>
+<p><strong>Hardware Setup</strong> (in <code>main.cpp</code>):</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup_hardware</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// Initialize GPIO pins, ADC, I2C, etc.</span>
+}
+</code></pre>
+</li>
+<li>
+<p><strong>Control Definitions</strong> (in <code>main.cpp</code>):</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup_controls</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// Create specific controls for this device</span>
+}
+</code></pre>
+</li>
+<li>
+<p><strong>Input Reading</strong> (in <code>main.cpp</code>):</p>
+<pre><code class="language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">read_inputs</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// Read physical inputs and update control values</span>
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="building-and-deployment">Building and Deployment</h2>
+<pre><code class="language-bash"><span class="hljs-comment"># Build the controller</span>
+pio run
+
+<span class="hljs-comment"># Upload to ESP32</span>
+pio run --target upload
+
+<span class="hljs-comment"># Monitor serial output</span>
+pio device monitor
+</code></pre>
+<h2 id="integration-with-master-controller">Integration with Master Controller</h2>
+<p>This template handles all the standard integration requirements:</p>
+<ul>
+<li>Device registration on startup</li>
+<li>Periodic heartbeat transmission</li>
+<li>Control value updates via REST API</li>
+<li>Automatic reconnection on network issues</li>
+<li>Graceful shutdown and deregistration</li>
+</ul>
+
+            
+            
+        </body>
+        </html>
