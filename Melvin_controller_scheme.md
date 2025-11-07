@@ -17,7 +17,6 @@
 - RR mount holes in center dash or plug
 - Internal aux lighting in glovebox needs LED swap
 - Measure inner diameter of steelie hubs for caps
-- Need 215/70R15 Spare on Volvo rim
 - perm/semi-perm 2m/70cm antenna, route to cockpit
 - Driver door panel trim loose
 - Pass door panel needs RR, dragging on window
