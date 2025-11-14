@@ -1,171 +1,111 @@
 # Melvin
 
-Extending a 25 year old Volvo with micro-controllers.
+![version](https://img.shields.io/badge/version-0.2.0-blue)
+![language](https://img.shields.io/badge/language-C++-/-C-/-Python-multicolor)
+![platform](https://img.shields.io/badge/platform-ESP32-green)
+![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
-## Project Status: v0.2.0 - Active Development
+Extending a 25-year-old Volvo with a network of micro-controllers.  
+(Yes, your car can get smarter — and maybe rebel gently.)
 
-### ✅ Completed Features
+## 🚀 Project Status: Active Development
 
-- **Master Controller**: ESP32-based coordinator with WiFi AP, REST API, and MQTT broker
-- **MQTT Integration**: Full pub/sub messaging system for real-time control events
-- **Abstract Member Controller**: Base class with WiFi client, REST registration, and MQTT client
-- **Error Handling**: Comprehensive error code system (100-999) with severity levels
-- **Logging System**: 5-level logging (DEBUG, INFO, WARN, ERROR, CRITICAL) with timestamps
-- **Version Tracking**: Firmware versioning with build metadata and feature flags
-- **Health Monitoring**: System status endpoint with memory and device statistics
-- **Connection Management**: Smart retry logic with exponential backoff
-- **Control ID Allocation**: Documented ID ranges to prevent conflicts
-- **Documentation**: Comprehensive guides for member controllers and MQTT usage
+**✅ Completed Features**  
+- Master Controller: ESP32-based coordinator with WiFi AP, REST API, and MQTT broker  
+- MQTT Integration: Full pub/sub messaging system for real-time control events  
+- Abstract Member Controller: Base class with WiFi client, REST registration, and MQTT client  
+- Error Handling: Comprehensive system (100-999) with severity levels  
+- Logging System: 5-level logging (DEBUG, INFO, WARN, ERROR, CRITICAL) with timestamps  
+- Version Tracking: Firmware versioning with build metadata and feature flags  
+- Health Monitoring: System status endpoint with memory and device statistics  
+- Connection Management: Retry logic with exponential back-off  
+- Control ID Allocation: Documented ID ranges to prevent conflicts  
+- Documentation: Guides for member controllers & MQTT usage  
 
-### 🔄 In Progress
+**🔧 In Progress**  
+- Hardware controller implementations (HID, Relay Bank, Sensor Bank)  
+- Configuration management system (web UI + SPIFFS storage)  
 
-- Hardware controller implementations (HID, Relay Bank, Sensor Bank)
-- Configuration management system (web UI + SPIFFS storage)
-- Testing with physical ESP32 hardware
+**🎯 Planned Features**  
+- Specialized controllers (GPS, Camera, Display, OBD-II)  
+- OTA firmware updates  
+- Advanced MQTT (QoS 1, retained messages)  
+- Web-based configuration interface  
+- Data logging & analytics  
 
-### 📋 Planned Features
+## 🏗 Architecture  
 
-- Additional specialized controllers (GPS, Camera, Display, OBD-II)
-- OTA firmware updates
-- Advanced MQTT features (QoS 1, retained messages)
-- Web-based configuration interface
-- Data logging and analytics
+### Communication Protocols  
+- REST API: Device registration, configuration & status queries  
+- MQTT: Real-time control events, sensor data, inter-device messaging  
 
-## Architecture
+### Controller Types  
+- **Master Controller**: Central coordinator — WiFi, REST, MQTT broker  
+- **Member Controllers**: Specialized devices for functions like:  
+  - Human Interface (HID) → switches/buttons  
+  - Relay Bank → lights/accessories  
+  - Sensor Bank → temperature/motion/light sensors  
+  - GPS Interface, Camera, Display, OBD-II Diagnostics … and more  
 
-### Communication Protocols
+## 🛠 Getting Started  
 
-- **REST API**: Device registration, configuration, status queries
-- **MQTT**: Real-time control events, sensor data, inter-device messaging
+### Master Controller Setup  
+1. `cd Melvin_master_controller/`  
+2. Read `GETTING_STARTED.md` for configuration  
+3. Build with PlatformIO: `pio run`  
+4. Flash to ESP32: `pio run --target upload`  
+5. Monitor output: `pio device monitor`  
 
-### Controller Types
+### Member Controller Setup  
+1. `cd Melvin_member_controllers/Mcontrol_Abstract/`  
+2. Read `README.md` & `CUSTOMIZATION_GUIDE.md`  
+3. Copy template to create a custom controller  
+4. Set device ID and control IDs  
+5. Build and flash to ESP32  
 
-- **Master Controller**: Central coordinator hosting WiFi network and MQTT broker
-- **Member Controllers**: Specialized devices for specific functions
-  - Human Interface (HID): Switches, buttons, joysticks
-  - Relay Bank: Output control for lights and accessories
-  - Sensor Bank: Temperature, motion, light sensors
-  - GPS Interface: Location tracking and speed
-  - Camera Interface: Video capture and streaming
-  - Display: User interface and information display
-  - OBD-II Interface: Vehicle diagnostics
-  - And more...
-
-## Getting Started
-
-### Master Controller Setup
-
-1. Navigate to `Melvin_master_controller/`
-2. Read `GETTING_STARTED.md` for configuration
-3. Build with PlatformIO: `pio run`
-4. Flash to ESP32: `pio run --target upload`
-5. Monitor: `pio device monitor`
-
-### Member Controller Setup
-
-1. Navigate to `Melvin_member_controllers/Mcontrol_Abstract/`
-2. Read `README.md` and `CUSTOMIZATION_GUIDE.md`
-3. Copy to create custom controller
-4. Configure device ID and control IDs
-5. Build and flash to ESP32
-
-## Documentation
-
-- **Melvin_controller_scheme.md**: Architecture and design overview
-- **CONTROL_ID_ALLOCATION.md**: Control ID ranges and assignment guide
-- **Melvin_master_controller/README.md**: Master controller details
-- **Melvin_member_controllers/README.md**: Member controller overview
-- **Mcontrol_Abstract/MQTT_IMPLEMENTATION.md**: MQTT usage guide
-- **Mcontrol_Abstract/CUSTOMIZATION_GUIDE.md**: Creating custom controllers
-
-## Technology Stack
-
-- **Platform**: ESP32 / ESP32-S3 microcontrollers
-- **Framework**: Arduino (via ESP-IDF)
-- **Build System**: PlatformIO
-- **Libraries**:
-  - ArduinoJson (JSON serialization)
-  - ESPAsyncWebServer (REST API)
-  - PicoMQTT (MQTT broker/client)
-  - AsyncTCP (Network layer)
-
-## Project Structure
-
+## 📁 Project Structure  
 ```text
+
 Melvin/
-├── .gitignore                          # Protect secrets and build artifacts
-├── README.md                           # This file
-├── LICENSE                             # Project license
-├── Melvin_controller_scheme.md         # Architecture documentation
-├── CONTROL_ID_ALLOCATION.md            # Control ID assignment guide
-├── Melvin_master_controller/           # Master ESP32 controller
+├── .gitignore
+├── README.md
+├── LICENSE
+├── Melvin_controller_scheme.md
+├── CONTROL_ID_ALLOCATION.md
+├── Melvin_master_controller/
 │   ├── include/
-│   │   ├── melvin_config.h            # WiFi, network, MQTT config
-│   │   ├── melvin_errors.h            # Error codes and logging
-│   │   └── melvin_version.h           # Version tracking
 │   ├── src/
-│   │   └── main.cpp                   # REST API and MQTT broker
-│   ├── platformio.ini                 # Build configuration
-│   ├── README.md                      # Master controller docs
-│   ├── GETTING_STARTED.md             # Setup instructions
-│   ├── MQTT_GUIDE.md                  # MQTT broker details
-│   └── BUILD_FIXES.md                 # Build troubleshooting
-└── Melvin_member_controllers/          # Member ESP32 controllers
-    ├── README.md                       # Member controllers overview
-    ├── Mcontrol_Abstract/              # Base class template
-    │   ├── include/
-    │   │   ├── config.h               # Configuration constants
-    │   │   └── melvin_member.h        # Class definition
-    │   ├── src/
-    │   │   └── main.cpp               # Base implementation
-    │   ├── platformio.ini             # Build configuration
-    │   ├── README.md                  # Abstract controller docs
-    │   ├── CUSTOMIZATION_GUIDE.md     # Creating custom controllers
-    │   ├── MQTT_IMPLEMENTATION.md     # MQTT usage guide
-    │   └── MQTT_COMPLETION_SUMMARY.md # MQTT implementation status
-    ├── Mcontrol_HID/                   # Human interface controller
-    ├── Mcontrol_Relay_Bank/            # Relay output controller
-    ├── Mcontrol_Polled_Sensor_Bank/    # Sensor input controller
-    ├── Mcontrol_GPS_Interface/         # GPS controller
-    ├── Mcontrol_Camera_Interface/      # Camera controller
-    ├── Mcontrol_Display/               # Display controller
-    ├── Mcontrol_ODBII_Interface/       # OBD-II diagnostics
-    └── ... (more specialized controllers)
+│   ├── platformio.ini
+│   ├── README.md
+│   ├── GETTING_STARTED.md
+│   └── ...
+└── Melvin_member_controllers/
+├── README.md
+├── Mcontrol_Abstract/
+├── Mcontrol_HID/
+├── Mcontrol_Relay_Bank/
+└── ...
 ```
 
-## Development Workflow
+## 🔩 Hardware Requirements  
+- ESP32 or ESP32-S3 development board  
+- 12 V automotive power supply (with 3.3 V regulation)  
+- Additional electronics: sensors, switches, relays per use-case  
+- USB cable for programming/debugging  
 
-1. **Master Controller**: Always start the master controller first
-2. **Member Controllers**: Build from abstract template or existing controllers
-3. **Testing**: Use REST API test scripts and MQTT clients for debugging
-4. **Integration**: Test communication between controllers via MQTT
-5. **Iteration**: Refine control mappings and event handling
+## ⚠️ Safety Notice  
+This is automotive electronics territory:  
+- Use proper fuses and circuit protection  
+- Test thoroughly before integrating  
+- Never compromise critical vehicle systems  
+- If unsure, consult a professional  
 
-## Contributing
+## 🤝 Contributing  
+This is a personal project, but feel free to reuse ideas and code. All code is provided as-is under the MIT license. PRs welcome though, I would love to see what you're working on, or how you're using Melvins distributed modules to reduce the need for long wire runs.
 
-This is a personal project, but feel free to use ideas and code for your own projects. All code is provided as-is under the project license.
+## See Also  
+- `Melvin_controller_scheme.md`: Architecture and API overview  
+- `CONTROL_ID_ALLOCATION.md`: Control ID assignment guide  
+- Master & Member controller docs located in their respective directories  
 
-## Hardware Requirements
-
-- ESP32 or ESP32-S3 development boards
-- 12V automotive power supply (with 3.3V regulation)
-- Sensors, switches, relays as needed for specific controllers
-- USB cables for programming and debugging
-
-## Safety Notice
-
-This project involves automotive electronics. Always:
-
-- Use proper fuses and circuit protection
-- Test thoroughly before vehicle integration
-- Follow automotive electrical safety practices
-- Never compromise critical vehicle systems
-- Consult professionals for installation
-
-## License
-
-See LICENSE file for details.
-
-## See Also
-
-- **Melvin_controller_scheme.md**: Detailed architecture and API documentation
+---
