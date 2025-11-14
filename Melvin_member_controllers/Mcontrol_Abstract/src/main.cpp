@@ -1,14 +1,27 @@
 /**
- * Abstract Member Controller Implementation
+ * Melvin Abstract Member Controller – Example Implementation
+ *
+ * This file demonstrates a complete example of an abstract member controller,
+ * designed as a reusable template for building specific controllers within the Melvin system.
  * 
- * This is a complete implementation of the abstract member controller that serves
- * as a template for all specific member controllers in the Melvin system.
+ * Purpose:
+ * - Provides a ready-to-customize base with all essential logic and structure.
+ * - Ensures consistent design and easier implementation of new member controllers.
  * 
- * To create a specific controller:
- * 1. Copy this entire directory
- * 2. Modify config.h with your specific settings
- * 3. Implement the virtual functions in your main.cpp
- * 4. Add your specific control logic
+ * How to use this template to create your own controller:
+ *   1. Duplicate this entire directory for your new device.
+ *   2. Edit 'config.h' to match your device’s properties, pins, and settings.
+ *   3. In 'main.cpp', override the virtual functions to add your specific control logic.
+ *   4. Implement your device’s unique hardware behavior and features.
+ * 
+ * This template handles:
+ *   - Hardware setup and safe initialization
+ *   - Input reading with debouncing and analog sampling
+ *   - Output control and state management
+ *   - MQTT and network registration (if enabled)
+ *   - Status/error handling and feedback
+ * 
+ * Start by reading through the main class below and follow the instructions in each section.
  */
 
 #include <Arduino.h>
@@ -1174,5 +1187,6 @@ void MelvinMemberController::on_mqtt_connected() {
 void MelvinMemberController::on_mqtt_disconnected() {
     debug_print("MQTT connection lost");
 }
+
 
 #endif // MQTT_ENABLED
