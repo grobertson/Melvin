@@ -4,7 +4,7 @@
 ![platform](https://img.shields.io/badge/platform-ESP32-green)
 ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
-![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)![platform]
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
 
 Extending a 25-year-old Volvo with a network of micro-controllers.  
@@ -111,4 +111,5 @@ This is a personal project, but feel free to reuse ideas and code. All code is p
 - Master & Member controller docs located in their respective directories  
 
 ---
+
 
