@@ -1,9 +1,11 @@
 # Melvin
 
 ![version](https://img.shields.io/badge/version-0.2.0-blue)
-![language](https://img.shields.io/badge/language-C++-/-C-/-Python-multicolor)
 ![platform](https://img.shields.io/badge/platform-ESP32-green)
 ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)![platform]
+
 
 Extending a 25-year-old Volvo with a network of micro-controllers.  
 (Yes, your car can get smarter — and maybe rebel gently.)
@@ -109,3 +111,4 @@ This is a personal project, but feel free to reuse ideas and code. All code is p
 - Master & Member controller docs located in their respective directories  
 
 ---
+
