@@ -11,8 +11,8 @@
  * - Control value routing and distribution
  * - Flash pattern support (wig-wag, etc.)
  * 
- * Author: Melvin Project
- * Framework: Arduino (PlatformIO)
+ * Author: F. G. Robertson (@grobertson)
+ * Framework: Arduino C++ using (PlatformIO)
  */
 
 #include <Arduino.h>
@@ -693,4 +693,5 @@ void loop() {
     
     // Small delay to prevent watchdog triggers
     delay(100);
+
 }
